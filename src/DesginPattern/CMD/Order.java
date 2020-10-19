@@ -11,12 +11,17 @@ public class Order implements Command{
     public Order(Customer customer){
         this.customer = customer;
     }
-
+    String key;
+    HashMap<String,Integer> list = ListMenu();
+    HashMap<String,Integer> orders = new HashMap<>();
     public void OrderofCustomer() {
-        HashMap<String,Integer> list = ListMenu();
         Object[] objects = list.keySet().toArray();
-        Object key = objects[new Random().nextInt(objects.length)];
-        System.out.println(key);
+         key = (String) objects[new Random().nextInt(objects.length)];
+         orders.put(key,list.get(key));
+    }
+
+    public HashMap<String, Integer> getOrders() {
+        return orders;
     }
 
     @Override
